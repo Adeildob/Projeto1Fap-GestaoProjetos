@@ -23,11 +23,24 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Criação da conexão com o banco de dados MySQL a partir dos parâmetros
+// const db = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "root",
+//   database: "mydb",
+// });
+
+require("dotenv").config();
+const dbHost = process.env.DB_HOST;
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+const dbName = process.env.DB_NAME;
+
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "mydb",
+  host: dbHost,
+  user: dbUser,
+  password: dbPassword,
+  database: dbName,
 });
 
 // Conexão com o banco de dados MySQL
